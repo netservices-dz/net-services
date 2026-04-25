@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Net Services - البوابة الوطنية للخدمات الإلكترونية</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
+
+        :root {
+            --primary-color: #0d5c46;
+            --secondary-color: #1a73e8;
+            --bg-color: #f8f9fa;
+            --card-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+            color: #202124;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0d5c46 0%, #158a69 100%);
+            color: white;
+            text-align: center;
+            padding: 3.5rem 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            letter-spacing: -1px;
+        }
+
+        header p {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: -2rem auto 4rem;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            border: 1px solid #eee;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+
+        .card h2 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid #f1f3f4;
+            padding-bottom: 15px;
+        }
+
+        .service-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            background-color: #fff;
+            border: 1px solid #dadce0;
+            padding: 14px 20px;
+            margin-bottom: 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #3c4043;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .service-btn:hover {
+            background-color: #f1f8f6;
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .service-btn::after {
+            content: "←";
+            font-size: 1.2rem;
+            transition: transform 0.2s;
+        }
+
+        .service-btn:hover::after {
+            transform: translateX(-5px);
+        }
+
+        footer {
+            background-color: #1a1d21;
+            color: #9aa0a6;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 5rem;
+        }
+
+        footer b { color: #fff; }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            .container { margin-top: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>NET SERVICES</h1>
+        <p>المنصة الموحدة للخدمات الإلكترونية الجزائرية</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="card">
+            <h2>التربية والتعليم 🎓</h2>
+            <a href="https://awlyaa.education.dz/login" target="_blank" class="service-btn">فضاء الأولياء</a>
+            <a href="https://takwin.dz/" target="_blank" class="service-btn">منصة تكوين</a>
+            <a href="https://progres.mesrs.dz/webetu/" target="_blank" class="service-btn">التسجيلات الجامعية</a>
+            <a href="https://bac.onec.dz/" target="_blank" class="service-btn">نتائج الامتحانات الرسمية</a>
+        </div>
+
+        <div class="card">
+            <h2>الخدمات المالية والجبائية 💸</h2>
+            <a href="https://eccp.poste.dz/" target="_blank" class="service-btn">خدمات بريد الجزائر (ECCP)</a>
+            <a href="https://tabioucom.mf.gov.dz/acheter" target="_blank" class="service-btn">خدمات جبائية</a>
+            <a href="https://qassimatouka.mf.gov.dz/acheter" target="_blank" class="service-btn">قسيمة السيارات</a>
+            <a href="https://www.aadlgestimmo.dz/epayement/View/index.php" target="_blank" class="service-btn">دفع فاتورة وكالة عدل</a>
+        </div>
+
+        <div class="card">
+            <h2>السكن والتشغيل 🏠</h2>
+            <a href="https://aadl.dz/relogin" target="_blank" class="service-btn">وكالة عدل (AADL)</a>
+            <a href="https://minha.anem.dz/" target="_blank" class="service-btn">منصة منحة البطالة</a>
+            <a href="https://wassitonline.anem.dz/" target="_blank" class="service-btn">الوكالة الوطنية للتشغيل</a>
+            <a href="https://elhanaa.cnas.dz/" target="_blank" class="service-btn">فضاء الضمان الاجتماعي</a>
+        </div>
+
+        <div class="card">
+            <h2>الوثائق الإدارية 📜</h2>
+            <a href="https://e-casier.mjustice.dz/" target="_blank" class="service-btn">السوابق العدلية</a>
+            <a href="https://etatcivil.interieur.gov.dz/" target="_blank" class="service-btn">شهادة الميلاد</a>
+            <a href="https://passeport.interieur.gov.dz/Ar/Accueil/BaBou" target="_blank" class="service-btn">الوثائق البيومترية</a>
+            <a href="https://www.dgsn.dz/e-declaration/" target="_blank" class="service-btn">التصريح بالضياع</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>تطوير وإشراف: <b>مكتب الخدمات الإلكترونية - Net Services</b></p>
+        <p>&copy; 2026 جميع الحقوق محفوظة</p>
+    </footer>
+
+</body>
+</html>
