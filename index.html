@@ -1,213 +1,521 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Net Services - البوابة الوطنية للخدمات الإلكترونية</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Net Services - البوابة الوطنية للخدمات الإلكترونية</title>
+<link rel="icon" type="image/png" href="logo.png">
 
-    <link rel="icon" type="image/png" href="logo.png">
-    
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=Tajawal:wght@400;500;700&display=swap');
 
-        :root {
-            --primary-color: #0d5c46;
-            --secondary-color: #1a73e8;
-            --bg-color: #f8f9fa;
-            --card-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        }
+:root{
+  --ink:#122820;
+  --ink-soft:#4b5b55;
+  --bg:#f3f4f1;
+  --paper:#ffffff;
+  --border:#e4e6e0;
 
-        body {
-            font-family: 'Tajawal', sans-serif;
-            background-color: var(--bg-color);
-            margin: 0;
-            padding: 0;
-            color: #202124;
-        }
+  --primary:#0b5c46;
+  --primary-dark:#073d2f;
+  --sand:#c08a34;
 
-        header {
-            background: linear-gradient(135deg, #0d5c46 0%, #158a69 100%);
-            color: white;
-            text-align: center;
-            padding: 3.5rem 1rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
+  --edu:#2b5f96;
+  --edu-soft:#eaf1f8;
+  --fin:#a5780f;
+  --fin-soft:#faf3e2;
+  --hous:#0b5c46;
+  --hous-soft:#e7f2ee;
+  --doc:#9c4a2c;
+  --doc-soft:#f8ede7;
 
-        /* تنسيق الشعار (اللوغو) */
-        .logo {
-            width: 120px; 
-            height: auto;
-            border-radius: 12px; 
-            margin-bottom: 15px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2); 
-        }
+  --shadow: 0 10px 30px rgba(18,40,32,0.08);
+  --shadow-hover: 0 18px 40px rgba(18,40,32,0.14);
+  --radius: 18px;
+}
 
-        header h1 {
-            margin: 0;
-            font-size: 2.8rem;
-            letter-spacing: -1px;
-        }
+*{box-sizing:border-box;}
 
-        header p {
-            margin-top: 15px;
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
+body{
+  margin:0;
+  font-family:'Tajawal', sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+}
 
-        .container {
-            max-width: 1200px;
-            margin: -2rem auto 4rem;
-            padding: 0 1.5rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
+h1,h2,.brand-title{
+  font-family:'Cairo', sans-serif;
+}
 
-        .card {
-            background: white;
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: var(--card-shadow);
-            border: 1px solid #eee;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+a{color:inherit;}
 
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
-        }
+/* ---------- Skip link / focus ---------- */
+:focus-visible{
+  outline:3px solid var(--sand);
+  outline-offset:2px;
+  border-radius:6px;
+}
 
-        .card h2 {
-            color: var(--primary-color);
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 2px solid #f1f3f4;
-            padding-bottom: 15px;
-        }
+/* ---------- Header ---------- */
+header{
+  position:relative;
+  background:linear-gradient(160deg, var(--primary-dark) 0%, var(--primary) 55%, #147a5c 100%);
+  color:#fff;
+  padding:4.5rem 1.5rem 5.5rem;
+  overflow:hidden;
+  text-align:center;
+  isolation:isolate;
+}
 
-        .service-btn {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            background-color: #fff;
-            border: 1px solid #dadce0;
-            padding: 14px 20px;
-            margin-bottom: 12px;
-            border-radius: 10px;
-            text-decoration: none;
-            color: #3c4043;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
+/* subtle eight-point star geometric motif, referencing traditional pattern work, kept low opacity */
+header::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  opacity:0.14;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1'%3E%3Cpath d='M48 6 L58 24 L78 24 L64 38 L70 58 L48 46 L26 58 L32 38 L18 24 L38 24 Z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:96px 96px;
+}
 
-        .service-btn:hover {
-            background-color: #f1f8f6;
-            border-color: var(--primary-color);
-            color: var(--primary-color);
-        }
+header::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:-1px;
+  height:60px;
+  background:var(--bg);
+  clip-path:polygon(0 100%, 100% 100%, 100% 0, 92% 45%, 84% 10%, 76% 50%, 68% 15%, 60% 45%, 52% 5%, 44% 40%, 36% 10%, 28% 48%, 20% 12%, 12% 42%, 4% 8%, 0 35%);
+}
 
-        .service-btn::after {
-            content: "←";
-            font-size: 1.2rem;
-            transition: transform 0.2s;
-        }
+.logo-badge{
+  width:104px;
+  height:104px;
+  border-radius:26px;
+  background:#fff;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 10px 26px rgba(0,0,0,0.25);
+  margin-bottom:1.4rem;
+}
 
-        .service-btn:hover::after {
-            transform: translateX(-5px);
-        }
+.logo-badge img{
+  width:76px;
+  height:76px;
+  object-fit:contain;
+  border-radius:14px;
+}
 
-        footer {
-            background-color: #1a1d21;
-            color: #9aa0a6;
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 5rem;
-        }
+header h1{
+  margin:0;
+  font-size:2.6rem;
+  font-weight:800;
+  letter-spacing:0.5px;
+}
 
-        footer b { color: #fff; }
+header .eyebrow{
+  display:inline-block;
+  font-size:0.85rem;
+  font-weight:700;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  background:rgba(255,255,255,0.16);
+  border:1px solid rgba(255,255,255,0.3);
+  padding:0.35rem 1rem;
+  border-radius:999px;
+  margin-bottom:1.1rem;
+}
 
-        @media (max-width: 768px) {
-            header h1 { font-size: 2rem; }
-            .container { margin-top: 1rem; }
-        }
-    </style>
+header p.subtitle{
+  margin:1rem auto 0;
+  max-width:560px;
+  font-size:1.1rem;
+  opacity:0.92;
+  line-height:1.7;
+}
+
+/* quick-jump pills: real navigation, not decoration */
+.quick-nav{
+  margin-top:2.2rem;
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.7rem;
+  justify-content:center;
+}
+
+.quick-nav a{
+  text-decoration:none;
+  color:#fff;
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.3);
+  padding:0.55rem 1.2rem;
+  border-radius:999px;
+  font-size:0.92rem;
+  font-weight:600;
+  transition:background 0.2s ease, transform 0.2s ease;
+}
+
+.quick-nav a:hover{
+  background:rgba(255,255,255,0.24);
+  transform:translateY(-2px);
+}
+
+/* ---------- Main grid ---------- */
+main{
+  max-width:1180px;
+  margin:0 auto;
+  padding:0 1.5rem 4rem;
+  position:relative;
+  z-index:1;
+}
+
+.container{
+  margin-top:-2.4rem;
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  gap:1.8rem;
+}
+
+.card{
+  background:var(--paper);
+  border-radius:var(--radius);
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  padding:0;
+  overflow:hidden;
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card.in-view{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.card:hover{
+  box-shadow:var(--shadow-hover);
+  border-color:transparent;
+}
+
+.card-accent{
+  height:6px;
+  width:100%;
+}
+
+.card-body{
+  padding:1.9rem 1.9rem 1.6rem;
+}
+
+.card-head{
+  display:flex;
+  align-items:center;
+  gap:0.9rem;
+  margin-bottom:1.4rem;
+  padding-bottom:1.2rem;
+  border-bottom:1px solid var(--border);
+}
+
+.icon-badge{
+  width:48px;
+  height:48px;
+  min-width:48px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.icon-badge svg{
+  width:24px;
+  height:24px;
+}
+
+.card h2{
+  margin:0;
+  font-size:1.28rem;
+  font-weight:700;
+}
+
+.card .count{
+  display:block;
+  font-family:'Tajawal', sans-serif;
+  font-weight:500;
+  font-size:0.8rem;
+  color:var(--ink-soft);
+  margin-top:2px;
+}
+
+.service-btn{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:0.8rem;
+  width:100%;
+  background:transparent;
+  border:1px solid var(--border);
+  padding:0.85rem 1.1rem;
+  margin-bottom:0.65rem;
+  border-radius:12px;
+  text-decoration:none;
+  color:var(--ink);
+  font-weight:500;
+  font-size:0.96rem;
+  line-height:1.5;
+  transition:background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.service-btn:last-child{margin-bottom:0;}
+
+.service-btn .chev{
+  flex:none;
+  width:18px;
+  height:18px;
+  transition:transform 0.2s ease;
+  opacity:0.55;
+}
+
+.service-btn:hover{
+  transform:translateX(-3px);
+  border-color:currentColor;
+}
+
+.service-btn:hover .chev{
+  transform:translateX(-4px);
+  opacity:1;
+}
+
+/* category color theming */
+.edu .card-accent{background:var(--edu);}
+.edu .icon-badge{background:var(--edu-soft); color:var(--edu);}
+.edu .service-btn:hover{background:var(--edu-soft); color:var(--edu);}
+
+.fin .card-accent{background:var(--fin);}
+.fin .icon-badge{background:var(--fin-soft); color:var(--fin);}
+.fin .service-btn:hover{background:var(--fin-soft); color:var(--fin);}
+
+.hous .card-accent{background:var(--hous);}
+.hous .icon-badge{background:var(--hous-soft); color:var(--hous);}
+.hous .service-btn:hover{background:var(--hous-soft); color:var(--hous);}
+
+.doc .card-accent{background:var(--doc);}
+.doc .icon-badge{background:var(--doc-soft); color:var(--doc);}
+.doc .service-btn:hover{background:var(--doc-soft); color:var(--doc);}
+
+/* ---------- Footer ---------- */
+footer{
+  background:var(--primary-dark);
+  color:#c9d6cf;
+  padding:3rem 1.5rem 2.2rem;
+}
+
+.footer-inner{
+  max-width:1180px;
+  margin:0 auto;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  gap:1.5rem;
+  border-top:1px solid rgba(255,255,255,0.12);
+  padding-top:1.8rem;
+}
+
+footer .brand{
+  display:flex;
+  align-items:center;
+  gap:0.7rem;
+  font-family:'Cairo', sans-serif;
+  color:#fff;
+  font-weight:700;
+}
+
+footer p{margin:0.2rem 0; font-size:0.9rem;}
+footer .fine{color:#93a69c; font-size:0.82rem;}
+
+.visitor-badge{margin-top:0.4rem; opacity:0.9;}
+
+@media (max-width:768px){
+  header{padding:3.4rem 1.2rem 5rem;}
+  header h1{font-size:2rem;}
+  .container{margin-top:-1.6rem;}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .card{transition:none; opacity:1; transform:none;}
+  .service-btn, .service-btn .chev, .quick-nav a{transition:none;}
+}
+</style>
 </head>
 <body>
 
-    <header>
-        <img src="logo.png" alt="شعار مكتب الخدمات الإلكترونية" class="logo">
-        <h1>NET SERVICES</h1>
-        <p>  الخدمات الإلكترونية الجزائرية </p>
-    </header>
+<header>
+  <span class="eyebrow">الجمهورية الجزائرية</span><br>
+  <div class="logo-badge">
+    <img src="logo.png" alt="شعار مكتب الخدمات الإلكترونية">
+  </div>
+  <h1>NET SERVICES</h1>
+  <p class="subtitle">بوابتك الموحّدة لكل الخدمات الإلكترونية الجزائرية، في مكان واحد وبتصميم واضح وسريع</p>
 
-    <div class="container">
-        
-        <div class="card">
-            <h2>التربية والتعليم 🎓</h2>
-            <a href="https://awlyaa.education.dz/login" target="_blank" class="service-btn">فضاء الأولياء</a>
-            <a href="https://takwin.dz/" target="_blank" class="service-btn">منصة تكوين</a>
-            <a href="https://progres.mesrs.dz/webetu/" target="_blank" class="service-btn">التسجيلات الجامعية</a>
-            <a href="https://progres.mesrs.dz/epaiement/epaiementI.xhtml" target="_blank" class="service-btn">دفع حقوق التسجيل الجامعي</a>
-            <a href="https://www.orientation-esi.dz/" target="_blank" class="service-btn">التسجيلات الجامعية الأولية</a>
-            <a href="https://bac.onec.dz/" target="_blank" class="service-btn">موقع شهادة البكالوريا</a>
-            <a href="https://bem.onec.dz/" target="_blank" class="service-btn">موقع شهادة التعليم المتوسط</a>
-            <a href="https://tawdif.education.dz/" target="_blank" class="service-btn">البوابة الرقمية القطاعية للتوظيف</a>
-            <a href="https://concours.onec.dz/" target="_blank" class="service-btn">المنصة الرقمية لتوظيف الأساتذة</a>
-            <a href="https://inscriptic.onefd.edu.dz/" target="_blank" class="service-btn">موقع المراسلة التسجيل الالكتروني</a>
-            <a href="https://www.dzexams.com/" target="_blank" class="service-btn">الفروض والاختبارات والدروس والملخصات</a>
-            <a href="https://preinscriptions.ufc.dz/" target="_blank" class="service-btn">(UFC)تسجيلات جامعة التكوين المتواصل</a>
+  <nav class="quick-nav" aria-label="التنقل السريع بين الأقسام">
+    <a href="#edu">التربية والتعليم</a>
+    <a href="#fin">الخدمات المالية</a>
+    <a href="#hous">السكن والتشغيل</a>
+    <a href="#doc">الوثائق الإدارية</a>
+  </nav>
+</header>
+
+<main>
+  <div class="container">
+
+    <section class="card edu" id="edu">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-head">
+          <span class="icon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8l10-5 10 5-10 5-10-5Z"/><path d="M6 10.5V16c0 1.4 2.7 3 6 3s6-1.6 6-3v-5.5"/><path d="M22 8v7"/></svg>
+          </span>
+          <div>
+            <h2>التربية والتعليم</h2>
+            <span class="count">12 خدمة</span>
+          </div>
         </div>
 
-        <div class="card">
-            <h2>الخدمات المالية والجبائية 💸</h2>
-            <a href="https://eccp.poste.dz/" target="_blank" class="service-btn">خدمات بريد الجزائر (ECCP)</a>
-            <a href="https://tabioucom.mf.gov.dz/acheter" target="_blank" class="service-btn">خدمات جبائية</a>
-            <a href="https://qassimatouka.mf.gov.dz/acheter" target="_blank" class="service-btn">قسيمة السيارات</a>
-            <a href="https://www.aadlgestimmo.dz/epayement/View/index.php" target="_blank" class="service-btn">دفع فاتورة وكالة عدل</a>
-            <a href="https://fadaeldjazair.mf.gov.dz/EDCFPUBLICHOME/" target="_blank" class="service-btn">المنصة الرقمية لمستخرجات الوثائق العقارية، شهادة السلبية، العقود المشهرة</a>
-            <a href="https://fadaeldjazair.mf.gov.dz/mission-documentaire/index_public_03.html" target="_blank" class="service-btn">Demande CC15/الدفتر العقاري</a>
-            <a href="https://paiement.at.dz/AR/index.php?p=voucher_internet" target="_blank" class="service-btn">تعبئة الانترنت - بطاقات التعبئة</a>
-            <a href="https://epayement.elit.dz/payementFacture.xhtml" target="_blank" class="service-btn">الدفع عبر الانترنت: فاتورة الكهرباء والغاز</a>
+        <a href="https://awlyaa.education.dz/login" target="_blank" class="service-btn">فضاء الأولياء<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://takwin.dz/" target="_blank" class="service-btn">منصة تكوين<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://progres.mesrs.dz/webetu/" target="_blank" class="service-btn">التسجيلات الجامعية<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://progres.mesrs.dz/epaiement/epaiementI.xhtml" target="_blank" class="service-btn">دفع حقوق التسجيل الجامعي<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://www.orientation-esi.dz/" target="_blank" class="service-btn">التسجيلات الجامعية الأولية<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://bac.onec.dz/" target="_blank" class="service-btn">موقع شهادة البكالوريا<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://bem.onec.dz/" target="_blank" class="service-btn">موقع شهادة التعليم المتوسط<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://tawdif.education.dz/" target="_blank" class="service-btn">البوابة الرقمية القطاعية للتوظيف<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://concours.onec.dz/" target="_blank" class="service-btn">المنصة الرقمية لتوظيف الأساتذة<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://inscriptic.onefd.edu.dz/" target="_blank" class="service-btn">موقع المراسلة التسجيل الالكتروني<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://www.dzexams.com/" target="_blank" class="service-btn">الفروض والاختبارات والدروس والملخصات<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://preinscriptions.ufc.dz/" target="_blank" class="service-btn">(UFC) تسجيلات جامعة التكوين المتواصل<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+      </div>
+    </section>
+
+    <section class="card fin" id="fin">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-head">
+          <span class="icon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 15c0 1.1 1.3 2 3 2s3-.9 3-2-1.3-1.6-3-2-3-.9-3-2 1.3-2 3-2 3 .9 3 2"/><path d="M12 6v2M12 16v2"/></svg>
+          </span>
+          <div>
+            <h2>الخدمات المالية والجبائية</h2>
+            <span class="count">8 خدمات</span>
+          </div>
         </div>
 
-        <div class="card">
-            <h2>السكن والتشغيل 🏠</h2>
-            <a href="https://aadl.dz/relogin" target="_blank" class="service-btn">وكالة عدل (AADL)</a>
-            <a href="https://sakani.fnpos.dz/login" target="_blank" class="service-btn">الصندوق الوطني لمعادلة الخدمات الاجتماعية (FNPOS)</a>
-            <a href="https://minha.anem.dz/" target="_blank" class="service-btn">منصة منحة البطالة</a>
-            <a href="https://insat.anem.dz/" target="_blank" class="service-btn">منصة إنصات للطعن حول منحة البطالة</a>
-            <a href="https://wassitonline.anem.dz/" target="_blank" class="service-btn">الوكالة الوطنية للتشغيل</a>
-            <a href="https://elhanaa.cnas.dz/" target="_blank" class="service-btn">فضاء الضمان الاجتماعي</a>
-            <a href="https://wassitonline.anem.dz/postulation/prolongationDemande" target="_blank" class="service-btn">تمديد طلب العمل</a>
-            <a href="https://formation.sante.gov.dz/index.html" target="_blank" class="service-btn">تسجيلات الشبه طبي</a>
-            <a href="https://preinscription.mdn.dz/" target="_blank" class="service-btn">موقع التسجيلات الأولية لوزارة الدفاع الوطني</a>
+        <a href="https://eccp.poste.dz/" target="_blank" class="service-btn">خدمات بريد الجزائر (ECCP)<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://tabioucom.mf.gov.dz/acheter" target="_blank" class="service-btn">خدمات جبائية<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://qassimatouka.mf.gov.dz/acheter" target="_blank" class="service-btn">قسيمة السيارات<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://www.aadlgestimmo.dz/epayement/View/index.php" target="_blank" class="service-btn">دفع فاتورة وكالة عدل<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://fadaeldjazair.mf.gov.dz/EDCFPUBLICHOME/" target="_blank" class="service-btn">المنصة الرقمية لمستخرجات الوثائق العقارية، شهادة السلبية، العقود المشهرة<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://fadaeldjazair.mf.gov.dz/mission-documentaire/index_public_03.html" target="_blank" class="service-btn">Demande CC15 / الدفتر العقاري<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://paiement.at.dz/AR/index.php?p=voucher_internet" target="_blank" class="service-btn">تعبئة الانترنت - بطاقات التعبئة<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://epayement.elit.dz/payementFacture.xhtml" target="_blank" class="service-btn">الدفع عبر الانترنت: فاتورة الكهرباء والغاز<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+      </div>
+    </section>
+
+    <section class="card hous" id="hous">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-head">
+          <span class="icon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+          </span>
+          <div>
+            <h2>السكن والتشغيل</h2>
+            <span class="count">9 خدمات</span>
+          </div>
         </div>
 
-        <div class="card">
-            <h2>الوثائق الإدارية 📜</h2>
-            <a href="https://www.mjustice.gov.dz/ar/%D8%B5%D9%80%D8%AD%D9%8A%D9%81%D8%A9%D8%A7%D9%84%D8%B3%D9%88%D8%A7%D8%A8%D9%82-%D8%A7%D9%84%D9%82%D8%B6%D8%A7%D8%A6%D9%8A%D8%A9/" target="_blank" class="service-btn">السوابق العدلية</a>
-            <a href="https://etatcivil.interieur.gov.dz/" target="_blank" class="service-btn">شهادة الميلاد</a>
-            <a href="https://etatcivil.interieur.gov.dz/ActeMariage/" target="_blank" class="service-btn">عقد الزواج</a>
-            <a href="https://passeport.interieur.gov.dz/Ar/Accueil/BaBou" target="_blank" class="service-btn">الوثائق البيومترية</a>
-            <a href="https://www.dgsn.dz/e-declaration/" target="_blank" class="service-btn">التصريح بالضياع</a>
-            <a href="https://pelerinage.interieur.gov.dz/Ar/Accueil/Accueil" target="_blank" class="service-btn">تسجيلات الحج</a>
-            <a href="https://dzds.dz/ar-dz/" target="_blank" class="service-btn">البوابة الوطنية الجزائرية للخدمات الرقمية</a>
+        <a href="https://aadl.dz/relogin" target="_blank" class="service-btn">وكالة عدل (AADL)<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://sakani.fnpos.dz/login" target="_blank" class="service-btn">الصندوق الوطني لمعادلة الخدمات الاجتماعية (FNPOS)<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://minha.anem.dz/" target="_blank" class="service-btn">منصة منحة البطالة<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://insat.anem.dz/" target="_blank" class="service-btn">منصة إنصات للطعن حول منحة البطالة<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://wassitonline.anem.dz/" target="_blank" class="service-btn">الوكالة الوطنية للتشغيل<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://elhanaa.cnas.dz/" target="_blank" class="service-btn">فضاء الضمان الاجتماعي<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://wassitonline.anem.dz/postulation/prolongationDemande" target="_blank" class="service-btn">تمديد طلب العمل<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://formation.sante.gov.dz/index.html" target="_blank" class="service-btn">تسجيلات الشبه طبي<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://preinscription.mdn.dz/" target="_blank" class="service-btn">موقع التسجيلات الأولية لوزارة الدفاع الوطني<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+      </div>
+    </section>
+
+    <section class="card doc" id="doc">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-head">
+          <span class="icon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6M9 9h2"/></svg>
+          </span>
+          <div>
+            <h2>الوثائق الإدارية</h2>
+            <span class="count">7 خدمات</span>
+          </div>
         </div>
 
+        <a href="https://www.mjustice.gov.dz/ar/%D8%B5%D9%80%D8%AD%D9%8A%D9%81%D8%A9%D8%A7%D9%84%D8%B3%D9%88%D8%A7%D8%A8%D9%82-%D8%A7%D9%84%D9%82%D8%B6%D8%A7%D8%A6%D9%8A%D8%A9/" target="_blank" class="service-btn">السوابق العدلية<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://etatcivil.interieur.gov.dz/" target="_blank" class="service-btn">شهادة الميلاد<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://etatcivil.interieur.gov.dz/ActeMariage/" target="_blank" class="service-btn">عقد الزواج<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://passeport.interieur.gov.dz/Ar/Accueil/BaBou" target="_blank" class="service-btn">الوثائق البيومترية<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://www.dgsn.dz/e-declaration/" target="_blank" class="service-btn">التصريح بالضياع<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://pelerinage.interieur.gov.dz/Ar/Accueil/Accueil" target="_blank" class="service-btn">تسجيلات الحج<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <a href="https://dzds.dz/ar-dz/" target="_blank" class="service-btn">البوابة الوطنية الجزائرية للخدمات الرقمية<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="brand">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l2.5 2.5L16 9"/></svg>
+        Net Services
+      </div>
+      <p class="fine">تطوير وإشراف: مكتب الخدمات الإلكترونية</p>
+      <p class="fine">© 2026 جميع الحقوق محفوظة</p>
     </div>
+    <div class="visitor-badge">
+      <img src="https://api.visitorbadge.io/api/visitors?path=netservices-dz-portal&label=الزيارات&labelColor=%23222222&countColor=%230d5c46" alt="عداد الزيارات">
+    </div>
+  </div>
+</footer>
 
-    <footer>
-        <p>تطوير وإشراف: <b>مكتب الخدمات الإلكترونية - Net Services</b></p>
-        <p>&copy; 2026 جميع الحقوق محفوظة</p>
-        
-        <div style="margin-top: 20px;">
-            <img src="https://api.visitorbadge.io/api/visitors?path=netservices-dz-portal&label=الزيارات&labelColor=%23222222&countColor=%230d5c46" alt="عداد الزيارات">
-        </div>
-    </footer>
+<script>
+  const cards = document.querySelectorAll('.card');
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach((entry, i)=>{
+        if(entry.isIntersecting){
+          setTimeout(()=> entry.target.classList.add('in-view'), i * 60);
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.12});
+    cards.forEach(c=> io.observe(c));
+  } else {
+    cards.forEach(c=> c.classList.add('in-view'));
+  }
+
+  document.querySelectorAll('.quick-nav a').forEach(link=>{
+    link.addEventListener('click', (e)=>{
+      const id = link.getAttribute('href');
+      const target = document.querySelector(id);
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
