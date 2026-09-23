@@ -339,6 +339,62 @@ main{
 .doc .icon-badge{background:var(--doc-soft); color:var(--doc);}
 .doc .service-btn:hover{background:var(--doc-soft); color:var(--doc);}
 
+/* ---------- Collapsible service lists ---------- */
+.card-head{
+  cursor:pointer;
+  user-select:none;
+  margin-bottom:0;
+  border-bottom:none;
+}
+
+.card-head:hover .icon-badge{
+  filter:brightness(0.96);
+}
+
+.card-head .toggle-chevron{
+  margin-inline-start:auto;
+  width:20px;
+  height:20px;
+  flex:none;
+  opacity:0.55;
+  transition:transform 0.3s ease;
+}
+
+.card.open .card-head .toggle-chevron{
+  transform:rotate(180deg);
+}
+
+.services-list{
+  display:grid;
+  grid-template-rows:0fr;
+  transition:grid-template-rows 0.4s ease;
+}
+
+.services-list .services-inner{
+  overflow:hidden;
+}
+
+.services-list .services-inner > .service-btn:first-child{
+  margin-top:1.4rem;
+}
+
+.card.open .services-list{
+  grid-template-rows:1fr;
+}
+
+.card-body{
+  padding-bottom:1.1rem;
+}
+
+.card.open .card-body{
+  padding-bottom:1.6rem;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .services-list{transition:none;}
+  .card-head .toggle-chevron{transition:none;}
+}
+
 /* ---------- Footer ---------- */
 footer{
   background:var(--primary-dark);
@@ -408,16 +464,19 @@ footer .fine{color:#93a69c; font-size:0.82rem;}
     <section class="card edu" id="edu">
       <div class="card-accent"></div>
       <div class="card-body">
-        <div class="card-head">
+        <div class="card-head" role="button" tabindex="0" aria-expanded="false" aria-controls="edu-list">
           <span class="icon-badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8l10-5 10 5-10 5-10-5Z"/><path d="M6 10.5V16c0 1.4 2.7 3 6 3s6-1.6 6-3v-5.5"/><path d="M22 8v7"/></svg>
           </span>
           <div>
             <h2>التربية والتعليم والتكوين</h2>
-            <span class="count">15 خدمة</span>
+            <span class="count">16 خدمة</span>
           </div>
+          <svg class="toggle-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
         </div>
 
+        <div class="services-list" id="edu-list">
+        <div class="services-inner">
         <a href="https://awlyaa.education.dz/login" target="_blank" class="service-btn">فضاء الأولياء<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
         <a href="https://takwin.dz/" target="_blank" class="service-btn">منصة تكوين<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
         <a href="https://cnepd.edu.dz/" target="_blank" class="service-btn">المركز الوطني للتكوين والتعليم المهنيين عن بعد<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
@@ -434,13 +493,15 @@ footer .fine{color:#93a69c; font-size:0.82rem;}
         <a href="https://www.dzexams.com/" target="_blank" class="service-btn">الفروض والاختبارات والدروس والملخصات<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
         <a href="https://fikradz.com/" target="_blank" class="service-btn">كل مايخص الأستاذ والتلميذ-مكتبة شاملة لجميع المراحل التعليمية<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
         <a href="https://preinscriptions.ufc.dz/" target="_blank" class="service-btn">(UFC) تسجيلات جامعة التكوين المتواصل<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        </div>
+        </div>
       </div>
     </section>
 
     <section class="card fin" id="fin">
       <div class="card-accent"></div>
       <div class="card-body">
-        <div class="card-head">
+        <div class="card-head" role="button" tabindex="0" aria-expanded="false" aria-controls="fin-list">
           <span class="icon-badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 15c0 1.1 1.3 2 3 2s3-.9 3-2-1.3-1.6-3-2-3-.9-3-2 1.3-2 3-2 3 .9 3 2"/><path d="M12 6v2M12 16v2"/></svg>
           </span>
@@ -448,8 +509,11 @@ footer .fine{color:#93a69c; font-size:0.82rem;}
             <h2>الخدمات المالية والجبائية</h2>
             <span class="count">11 خدمات</span>
           </div>
+          <svg class="toggle-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
         </div>
 
+        <div class="services-list" id="fin-list">
+        <div class="services-inner">
         <a href="https://eccp.poste.dz/" target="_blank" class="service-btn">خدمات بريد الجزائر (ECCP)<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
         <a href="https://ccpnet.poste.dz/" target="_blank" class="service-btn">فتح حساب جاري بريدي ccp<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
         <a href="https://tabioucom.mf.gov.dz/acheter" target="_blank" class="service-btn">خدمات جبائية<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
@@ -461,13 +525,15 @@ footer .fine{color:#93a69c; font-size:0.82rem;}
         <a href="https://epayement.elit.dz/payementFacture.xhtml" target="_blank" class="service-btn">الدفع عبر الانترنت: فاتورة الكهرباء والغاز<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
         <a href="https://e-mahata.naftal.dz/" target="_blank" class="service-btn">عجلات نافطال<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
         <a href="https://anae.dz/" target="_blank" class="service-btn">الوكالة الوطنية للمقاول الذاتي<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        </div>
+        </div>
       </div>
     </section>
 
     <section class="card hous" id="hous">
       <div class="card-accent"></div>
       <div class="card-body">
-        <div class="card-head">
+        <div class="card-head" role="button" tabindex="0" aria-expanded="false" aria-controls="hous-list">
           <span class="icon-badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
           </span>
@@ -475,8 +541,11 @@ footer .fine{color:#93a69c; font-size:0.82rem;}
             <h2>السكن والتشغيل</h2>
             <span class="count">13 خدمات</span>
           </div>
+          <svg class="toggle-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
         </div>
 
+        <div class="services-list" id="hous-list">
+        <div class="services-inner">
         <a href="https://aadl.dz/relogin" target="_blank" class="service-btn">وكالة عدل (AADL)<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
         <a href="https://sakani.fnpos.dz/login" target="_blank" class="service-btn">الصندوق الوطني لمعادلة الخدمات الاجتماعية (FNPOS)<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
         <a href="https://minha.anem.dz/" target="_blank" class="service-btn">منصة منحة البطالة<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
@@ -490,6 +559,8 @@ footer .fine{color:#93a69c; font-size:0.82rem;}
         <a href="https://preinscription.mdn.dz/" target="_blank" class="service-btn">موقع التسجيلات الأولية لوزارة الدفاع الوطني<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
         <a href="https://pnme.aprue.org.dz/index.php" target="_blank" class="service-btn">الوكالة الوطنية لتطوير استخدام الطاقة وترشيده<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
         <a href="https://equivalence.dgfp.gov.dz/" target="_blank" class="service-btn"> الأرضية الرقمية للمعادلات الإدارية<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        </div>
+        </div>
       </div>
       </div>
       </div>
@@ -498,7 +569,7 @@ footer .fine{color:#93a69c; font-size:0.82rem;}
     <section class="card doc" id="doc">
       <div class="card-accent"></div>
       <div class="card-body">
-        <div class="card-head">
+        <div class="card-head" role="button" tabindex="0" aria-expanded="false" aria-controls="doc-list">
           <span class="icon-badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6M9 9h2"/></svg>
           </span>
@@ -506,8 +577,11 @@ footer .fine{color:#93a69c; font-size:0.82rem;}
             <h2>الوثائق الإدارية</h2>
             <span class="count">7 خدمات</span>
           </div>
+          <svg class="toggle-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
         </div>
 
+        <div class="services-list" id="doc-list">
+        <div class="services-inner">
         <a href="https://www.mjustice.gov.dz/ar/%D8%B5%D9%80%D8%AD%D9%8A%D9%81%D8%A9%D8%A7%D9%84%D8%B3%D9%88%D8%A7%D8%A8%D9%82-%D8%A7%D9%84%D9%82%D8%B6%D8%A7%D8%A6%D9%8A%D8%A9/" target="_blank" class="service-btn">السوابق العدلية<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
         <a href="https://etatcivil.interieur.gov.dz/" target="_blank" class="service-btn">شهادة الميلاد<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
         <a href="https://etatcivil.interieur.gov.dz/ActeMariage/" target="_blank" class="service-btn">عقد الزواج<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
@@ -515,6 +589,8 @@ footer .fine{color:#93a69c; font-size:0.82rem;}
         <a href="https://www.dgsn.dz/e-declaration/" target="_blank" class="service-btn">التصريح بالضياع<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
         <a href="https://pelerinage.interieur.gov.dz/Ar/Accueil/Accueil" target="_blank" class="service-btn">تسجيلات الحج<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
         <a href="https://dzds.dz/ar-dz/" target="_blank" class="service-btn">البوابة الوطنية الجزائرية للخدمات الرقمية<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a>
+        </div>
+        </div>
       </div>
     </section>
 
@@ -551,12 +627,34 @@ footer .fine{color:#93a69c; font-size:0.82rem;}
     cards.forEach(c=> c.classList.add('in-view'));
   }
 
+  function openCard(card){
+    const head = card.querySelector('.card-head');
+    card.classList.add('open');
+    if(head) head.setAttribute('aria-expanded', 'true');
+  }
+
+  document.querySelectorAll('.card-head[role="button"]').forEach(head=>{
+    const card = head.closest('.card');
+    const toggle = ()=>{
+      const isOpen = card.classList.toggle('open');
+      head.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    };
+    head.addEventListener('click', toggle);
+    head.addEventListener('keydown', (e)=>{
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        toggle();
+      }
+    });
+  });
+
   document.querySelectorAll('.quick-nav a').forEach(link=>{
     link.addEventListener('click', (e)=>{
       const id = link.getAttribute('href');
       const target = document.querySelector(id);
       if(target){
         e.preventDefault();
+        openCard(target);
         target.scrollIntoView({behavior:'smooth', block:'start'});
       }
     });
